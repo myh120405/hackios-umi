@@ -35,7 +35,7 @@ concurrency:
 jobs:
   loader:
     name: loader (platform_umi)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
@@ -72,7 +72,7 @@ jobs:
 
   kernel:
     name: kernel (XNU for umi)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 120
     # Its own group: a kernel run and a UEFI run share nothing but a checkout, and a kernel run
     # must not queue behind an images run that takes hours.
@@ -197,7 +197,7 @@ jobs:
   uefi:
     name: UEFI (Mu-Silicium umiPkg)
     if: ${{ inputs.uefi }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
@@ -293,7 +293,7 @@ jobs:
   images:
     name: iOS 16.5 images
     if: ${{ inputs.images }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 300
     steps:
       - uses: actions/checkout@v4
